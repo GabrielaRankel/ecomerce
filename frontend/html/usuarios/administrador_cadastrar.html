@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo administrador | Folha Viva</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/usuario-admin.css">
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/usuarios/administrador_cadastrar.js" defer></script>
+</head>
+
+<body data-somente-admin>
+
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../admin.html">Painel</a>
+            <a href="../admin_login.html">Sair</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <main class="pagina-admin-usuario">
+        <h1>Novo administrador</h1>
+        <p>A pessoa cadastrada poderá entrar pelo "Acesso administrativo".</p>
+
+        <form id="formAdmin">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="sobreNome">Sobrenome:</label>
+            <input type="text" id="sobreNome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+
+            <label for="senha">Senha (mínimo 8 caracteres):</label>
+            <input type="password" id="senha" minlength="8" required>
+
+            <button type="submit">Cadastrar administrador</button>
+        </form>
+
+        <p id="mensagem"></p>
+    </main>
+
+</body>
+</html>

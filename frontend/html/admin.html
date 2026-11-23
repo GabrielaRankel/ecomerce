@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração | Folha Viva</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/comum.js" defer></script>
+    <script src="../js/admin.js" defer></script>
+</head>
+
+<body data-somente-admin>
+
+    <header class="topo">
+        <a href="../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../index.html">Início</a>
+            <a href="produto/produtos.html">Produtos</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="historico.html">Pedidos</a>
+            <a href="perfil.html">Minha conta</a>
+            <a href="admin_login.html">Sair</a>
+        </nav>
+
+        <a href="admin.html" class="admin-link ativo">Administração</a>
+    </header>
+
+    <main class="painel-admin">
+
+        <section class="introducao-admin">
+            <span class="detalhe-retro">✿ ÁREA EXCLUSIVA ✿</span>
+
+            <h1>Painel Administrativo</h1>
+
+            <p>
+                Bem-vindo ao centro de gerenciamento da Folha Viva!
+                Escolha uma área para começar.
+            </p>
+        </section>
+
+        <section class="resumo-admin">
+
+            <div class="numero-resumo">
+                <strong id="quantidadeProdutos">-</strong>
+                <span>Produtos cadastrados</span>
+            </div>
+
+            <div class="numero-resumo">
+                <strong id="quantidadePedidos">-</strong>
+                <span>Pedidos pagos</span>
+            </div>
+
+            <div class="numero-resumo">
+                <strong id="valorVendas">-</strong>
+                <span>Total vendido</span>
+            </div>
+
+        </section>
+
+        <section class="modulos-admin">
+
+            <a href="../html/produto/produto_listar.html" class="card-modulo">
+                <span class="icone-modulo">📚</span>
+                <h2>Produtos</h2>
+                <p>Cadastre, consulte e gerencie livros físicos e e-books.</p>
+                <span class="acessar-modulo">Gerenciar produtos →</span>
+            </a>
+
+            <a href="estoque/estoque_listar.html" class="card-modulo">
+                <span class="icone-modulo">📦</span>
+                <h2>Estoque</h2>
+                <p>Controle as quantidades dos livros físicos (e-books não têm estoque).</p>
+                <span class="acessar-modulo">Gerenciar estoque →</span>
+            </a>
+
+            <a href="pedido/pedido_listar.html" class="card-modulo">
+                <span class="icone-modulo">🛍️</span>
+                <h2>Pedidos</h2>
+                <p>Consulte e gerencie os pedidos realizados.</p>
+                <span class="acessar-modulo">Gerenciar pedidos →</span>
+            </a>
+
+            <a href="itemPedido/itemPedido_listar.html" class="card-modulo">
+                <span class="icone-modulo">🧾</span>
+                <h2>Itens dos pedidos</h2>
+                <p>Visualize os produtos que fazem parte de cada pedido.</p>
+                <span class="acessar-modulo">Gerenciar itens →</span>
+            </a>
+
+            <a href="usuarios/usuario_listar.html" class="card-modulo">
+                <span class="icone-modulo">♙</span>
+                <h2>Usuários</h2>
+                <p>Consulte e gerencie os clientes cadastrados.</p>
+                <span class="acessar-modulo">Gerenciar usuários →</span>
+            </a>
+
+            <a href="entregas/entrega_listar.html" class="card-modulo">
+                <span class="icone-modulo">🚚</span>
+                <h2>Entregas</h2>
+                <p>Acompanhe os envios dos livros físicos e atualize as entregas.</p>
+                <span class="acessar-modulo">Gerenciar entregas →</span>
+            </a>
+
+            <a href="usuarios/administrador_cadastrar.html" class="card-modulo">
+                <span class="icone-modulo">🔑</span>
+                <h2>Novo administrador</h2>
+                <p>Dê acesso à área administrativa a outra pessoa da equipe.</p>
+                <span class="acessar-modulo">Cadastrar administrador →</span>
+            </a>
+
+            <a href="categoria/categoria_listar.html" class="card-modulo">
+                <span class="icone-modulo">✿</span>
+                <h2>Categorias</h2>
+                <p>Organize os livros por gêneros literários.</p>
+                <span class="acessar-modulo">Gerenciar categorias →</span>
+            </a>
+
+
+            <a href="relatorios.html" class="card-modulo">
+
+                <span class="icone-modulo">📊</span>
+
+                <h2>Relatórios</h2>
+
+                <p>
+                    Visualize gráficos de vendas e acompanhe o estoque da loja.
+                </p>
+
+                <span class="acessar-modulo">
+                    Visualizar relatórios →
+                </span>
+
+            </a>
+
+
+        </section>
+
+        <p class="frase-final">
+            📖 Cada livro tem sua história. Cuide de cada detalhe!
+        </p>
+
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank" rel="noopener noreferrer" class="github-link">✿ Meu
+            GitHub</a>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+/* ======================================================
+   Usuários (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-usuario {
+    max-width: 960px;
+}
+
+main.pagina-admin-usuario h1 {
+    border-left: 6px solid var(--vinho);
+    padding-left: 12px;
+}
+
+main.pagina-admin-usuario .card,
+main.pagina-admin-usuario .painel {
+    border-left-color: var(--vinho);
+}
+
+main.pagina-admin-usuario th {
+    background: var(--vinho);
+}
+
+main.pagina-admin-usuario form {
+    border-top: 5px solid var(--vinho);
+}

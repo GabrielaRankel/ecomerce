@@ -1,0 +1,31 @@
+/* ======================================================
+   Estoque (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-estoque {
+    max-width: 960px;
+}
+
+main.pagina-admin-estoque h1 {
+    border-left: 6px solid var(--ouro);
+    padding-left: 12px;
+}
+
+main.pagina-admin-estoque .card,
+main.pagina-admin-estoque .painel {
+    border-left-color: var(--ouro);
+}
+
+main.pagina-admin-estoque th {
+    background: var(--ouro);
+}
+
+main.pagina-admin-estoque form {
+    border-top: 5px solid var(--ouro);
+}
+
+main.pagina-admin-estoque th {
+    color: var(--tinta);
+}

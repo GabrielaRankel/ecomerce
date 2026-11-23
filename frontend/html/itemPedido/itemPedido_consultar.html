@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Item | Folha Viva</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/itemPedido-admin.css">
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/itemPedido/itemPedido_consultar.js" defer></script>
+</head>
+<body>
+
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../perfil.html">Minha conta</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-itens">
+        <a href="itemPedido_listar.html">Listar</a>
+        <a href="itemPedido_cadastrar.html">Cadastrar</a>
+        <a href="itemPedido_consultar.html" class="ativo">Consultar</a>
+        <a href="itemPedido_atualizar.html">Atualizar</a>
+        <a href="itemPedido_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-item">
+        <h1>Consultar Item</h1>
+        <p class="descricao-pagina">
+            Pesquise um item pelo código para conferir seus detalhes.
+        </p>
+
+        <section class="painel">
+            <label for="codigo">Código do item:</label>
+            <input type="number" id="codigo" min="1">
+
+            <button type="button" id="btnBuscar">Buscar item</button>
+
+            <p id="mensagem"></p>
+        </section>
+
+        <div class="tabela-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Pedido</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="listaItens"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
+</body>
+</html>

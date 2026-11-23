@@ -1,0 +1,27 @@
+/* ======================================================
+   Itens dos pedidos (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-item {
+    max-width: 960px;
+}
+
+main.pagina-admin-item h1 {
+    border-left: 6px solid var(--verde-escuro);
+    padding-left: 12px;
+}
+
+main.pagina-admin-item .card,
+main.pagina-admin-item .painel {
+    border-left-color: var(--verde-escuro);
+}
+
+main.pagina-admin-item th {
+    background: var(--verde-escuro);
+}
+
+main.pagina-admin-item form {
+    border-top: 5px solid var(--verde-escuro);
+}

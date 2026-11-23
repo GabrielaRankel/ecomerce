@@ -1,0 +1,27 @@
+/* ======================================================
+   Pedidos (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-pedido {
+    max-width: 960px;
+}
+
+main.pagina-admin-pedido h1 {
+    border-left: 6px solid var(--verde);
+    padding-left: 12px;
+}
+
+main.pagina-admin-pedido .card,
+main.pagina-admin-pedido .painel {
+    border-left-color: var(--verde);
+}
+
+main.pagina-admin-pedido th {
+    background: var(--verde);
+}
+
+main.pagina-admin-pedido form {
+    border-top: 5px solid var(--verde);
+}

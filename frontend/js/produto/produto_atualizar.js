@@ -1,0 +1,103 @@
+
+const baseUrl = 'http://localhost:3000'
+const token = localStorage.getItem('token')
+
+if (!token) {
+    alert('Faça login para continuar!')
+    window.location.href = '../../html/login.html'
+}
+
+async function carregarCategorias() {
+    const select = document.getElementById('categoria_id')
+
+    try {
+        const resposta = await fetch(`${baseUrl}/categorias`)
+        const categorias = await resposta.json()
+
+        select.innerHTML = '<option value="">Selecione</option>'
+
+        categorias.forEach(categoria => {
+            select.innerHTML += `
+                <option value="${categoria.id}">
+                    ${categoria.nome}
+                </option>
+            `
+        })
+
+    } catch (erro) {
+        console.error(erro)
+        alert('Erro ao carregar categorias!')
+    }
+}
+
+document.getElementById('form_atualizar').addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const id = document.getElementById('id').value
+
+    const produto = {
+        nome: document.getElementById('nome').value,
+        escritor: document.getElementById('escritor').value,
+        colecao: document.getElementById('colecao').value,
+        formato: document.getElementById('formato').value,
+        ano: Number(document.getElementById('ano').value),
+        preco: Number(document.getElementById('preco').value),
+        imagem: document.getElementById('imagem').value,
+        arquivo_url: arquivoDoEbook(),
+        descricao: document.getElementById('descricao').value,
+        categoria_id: Number(document.getElementById('categoria_id').value)
+    }
+
+    try {
+        const resposta = await fetch(`${baseUrl}/produto/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(produto)
+        })
+
+        const dados = await resposta.json()
+
+        alert(resposta.ok ? 'Produto atualizado com sucesso!' : dados.message)
+
+        if (resposta.ok) {
+            window.location.href = 'produto_listar.html'
+        }
+
+    } catch (erro) {
+        console.error(erro)
+        alert('Erro ao atualizar produto!')
+    }
+})
+
+// ======================================================
+// CAMPO DO ARQUIVO (somente para e-books)
+// ======================================================
+
+function arquivoDoEbook() {
+
+    if (document.getElementById('formato').value !== 'EBOOK') {
+        return null
+    }
+
+    return document.getElementById('arquivo_url').value.trim() || null
+
+}
+
+function ajustarCampoArquivo() {
+
+    const ehEbook = document.getElementById('formato').value === 'EBOOK'
+
+    document.getElementById('areaArquivo').style.display =
+        ehEbook ? 'block' : 'none'
+
+}
+
+document.getElementById('formato').addEventListener('change', ajustarCampoArquivo)
+
+ajustarCampoArquivo()
+
+carregarCategorias()
+

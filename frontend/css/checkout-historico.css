@@ -1,0 +1,106 @@
+/* ======================================================
+   CHECKOUT E HISTÓRICO DE PEDIDOS
+   html/checkout.html e html/historico.html
+   ====================================================== */
+
+main.pagina-pedido {
+    max-width: 800px;
+}
+
+main.pagina-pedido > p {
+    color: var(--tinta-suave);
+}
+
+/* ---------- CHECKOUT ---------- */
+
+#resumoCheckout {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--ouro);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 18px 22px;
+    margin-top: 20px;
+}
+
+#resumoCheckout p {
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--borda);
+}
+
+#resumoCheckout h2 {
+    color: var(--vinho);
+    margin: 0;
+}
+
+.aviso-checkout {
+    background: #F7EBCB;
+    border: 1px solid var(--ouro);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: var(--tinta);
+}
+
+.aviso-checkout:empty {
+    display: none;
+}
+
+/* ---------- HISTÓRICO ---------- */
+
+.pedido {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 5px solid var(--verde);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 20px 24px;
+    margin-top: 20px;
+}
+
+.pedido h3 {
+    margin: 14px 0 8px;
+    font-size: 1.05rem;
+}
+
+.item-pedido {
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+}
+
+.btn-ebooks {
+    margin-top: 12px;
+    background: var(--vinho);
+}
+
+.btn-ebooks:hover {
+    background: #6F2430;
+}
+
+.area-ebooks {
+    margin-top: 10px;
+}
+
+.area-ebooks a {
+    font-weight: 600;
+}
+
+.area-ebooks p {
+    padding: 4px 0;
+}
+
+.aviso-ebook {
+    margin-top: 12px;
+    color: var(--tinta-suave);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+#listaPedidos br {
+    display: none;
+}

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Estoque | Folha Viva</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/estoque-admin.css">
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/estoque/estoque_excluir.js" defer></script>
+</head>
+<body data-somente-admin>
+
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../perfil.html">Minha conta</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-estoque">
+        <a href="estoque_listar.html">Listar</a>
+        <a href="estoque_cadastrar.html">Cadastrar</a>
+        <a href="estoque_consultar.html">Consultar</a>
+        <a href="estoque_atualizar.html">Atualizar</a>
+        <a href="estoque_excluir.html" class="ativo">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-estoque">
+        <h1>Excluir Estoque</h1>
+        <p class="descricao-pagina">
+            Selecione o registro de estoque que deseja remover.
+        </p>
+
+        <section class="painel">
+            <label for="estoque_id">Selecione o estoque:</label>
+            <select id="estoque_id">
+                <option value="">Selecione</option>
+            </select>
+
+            <button type="button" id="btnExcluir">Excluir estoque</button>
+
+            <p id="mensagem"></p>
+        </section>
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
+</body>
+</html>
+

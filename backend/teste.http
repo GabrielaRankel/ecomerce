@@ -1,0 +1,438 @@
+
+@baseUrl = http://localhost:3000
+
+### ==========================================
+### USUÁRIOS
+### ==========================================
+
+### 1. CADASTRAR USUÁRIO (PÚBLICO)
+# Todo cadastro novo nasce como CLIENTE. Para criar o primeiro administrador, rode no MySQL:
+#   UPDATE usuarios SET tipo = 'ADMIN' WHERE email = 'clarice@email.com';
+# Depois faça login de novo. Rotas marcadas como (PRIVADO) de produto, categoria,
+# estoque, relatório e atualização de entrega exigem ADMIN.
+# @name cadastrarUsuario
+POST {{baseUrl}}/usuario
+Content-Type: application/json
+
+{
+    "nome": "Clarice",
+    "sobreNome": "Heitmann",
+    "idade": 18,
+    "email": "clarice@email.com",
+    "senha": "123456",
+    "telefone": "47999999999",
+    "cpf": "529.982.247-25",
+    "cep": "01001-000",
+    "numero": "100"
+}
+
+### 2. LISTAR USUÁRIOS (PRIVADO)
+GET {{baseUrl}}/usuarios
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 3. CONSULTAR USUÁRIO POR ID (PRIVADO)
+GET {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. CONSULTAR USUÁRIO POR NOME (PRIVADO)
+GET {{baseUrl}}/usuario/buscar/Clarice Atualizada
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 5. ATUALIZAR USUÁRIO (PRIVADO)
+PUT {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Clarice Atualizada",
+    "sobreNome": "Heitmann",
+    "idade": 19,
+    "telefone": "47988888888"
+}
+
+### 6. ATUALIZAR PARCIALMENTE USUÁRIO (PRIVADO)
+PATCH {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "telefone": "47977777777"
+}
+
+### 7. EXCLUIR USUÁRIO (PRIVADO)
+DELETE {{baseUrl}}/usuario/3
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### login
+### ==========================================
+
+# @name loginReq
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "clarice@email.com",
+    "senha": "123456"
+}
+
+
+
+
+### ==========================================
+### CATEGORIAS
+### ==========================================
+
+### 1. CADASTRAR CATEGORIA (PRIVADO)
+# @name cadastrarCategoria
+POST {{baseUrl}}/categoria
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Quadrinhos",
+    "descricao": "Histórias em quadrinhos e graphic novels"
+}
+
+### 2. LISTAR CATEGORIAS (PÚBLICO)
+GET {{baseUrl}}/categorias
+
+### 3. CONSULTAR CATEGORIA POR ID (PÚBLICO)
+GET {{baseUrl}}/categoria/1
+
+### 4. CONSULTAR CATEGORIA POR NOME (PÚBLICO)
+GET {{baseUrl}}/categoria/buscar/Fantasia
+
+### 5. ATUALIZAR CATEGORIA (PRIVADO)
+PUT {{baseUrl}}/categoria/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Literatura Clássica",
+    "descricao": "Clássicos da literatura nacional e estrangeira"
+}
+
+### 6. ATUALIZAR PARCIALMENTE CATEGORIA (PRIVADO)
+PATCH {{baseUrl}}/categoria/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "descricao": "Livros de fantasia e suas vertentes"
+}
+
+### 7. EXCLUIR CATEGORIA (PRIVADO)
+DELETE {{baseUrl}}/categoria/7
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### PRODUTOS
+### ==========================================
+
+### 1. CADASTRAR LIVRO FÍSICO (PRIVADO)
+# @name cadastrarProduto
+POST {{baseUrl}}/produto
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Dom Casmurro",
+    "escritor": "Machado de Assis",
+    "colecao": "Dom Casmurro",
+    "formato": "FISICO",
+    "ano": 1899,
+    "preco": 39.90,
+    "imagem": "/imagens/dom-casmurro.jpg",
+    "descricao": "Romance clássico de Machado de Assis.",
+    "categoria_id": 2
+}
+
+### 2. CADASTRAR E-BOOK (PRIVADO)
+# @name cadastrarEbook
+POST {{baseUrl}}/produto
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Dom Casmurro (E-book)",
+    "escritor": "Machado de Assis",
+    "colecao": "Dom Casmurro",
+    "formato": "EBOOK",
+    "ano": 1899,
+    "preco": 19.90,
+    "imagem": "/imagens/dom-casmurro.jpg",
+    "descricao": "Romance clássico de Machado de Assis em versão digital.",
+    "arquivo_url": "https://exemplo.com/ebooks/dom-casmurro.epub",
+    "categoria_id": 2
+}
+
+### 3. LISTAR PRODUTOS (PÚBLICO)
+GET {{baseUrl}}/produtos
+
+### 4. CONSULTAR PRODUTO POR ID (PÚBLICO)
+GET {{baseUrl}}/produto/1
+
+### 5. CONSULTAR PRODUTO POR NOME (PÚBLICO)
+GET {{baseUrl}}/produto/buscar/Dom%20Casmurro
+
+### 6. CONSULTAR E-BOOK POR NOME (PÚBLICO)
+GET {{baseUrl}}/produto/buscar/Dom%20Casmurro%20(E-book)
+
+### 7. ATUALIZAR PRODUTO (PRIVADO)
+PUT {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "Dom Casmurro (Edição Comentada)",
+    "escritor": "Machado de Assis",
+    "colecao": "Dom Casmurro",
+    "formato": "FISICO",
+    "ano": 1899,
+    "preco": 49.90,
+    "imagem": "/imagens/dom-casmurro.jpg",
+    "descricao": "Edição comentada.",
+    "categoria_id": 2
+}
+
+### 8. ATUALIZAR PARCIALMENTE PRODUTO (PRIVADO)
+PATCH {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "preco": 44.90
+}
+
+### 9. INFORMAR O ARQUIVO DE UM E-BOOK (PRIVADO)
+# Use o ID de um produto com formato EBOOK
+PATCH {{baseUrl}}/produto/2
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "arquivo_url": "https://exemplo.com/ebooks/dom-casmurro-v2.epub"
+}
+
+### 10. EXCLUIR PRODUTO (PRIVADO)
+DELETE {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### ESTOQUE
+### ==========================================
+
+### 1. CADASTRAR ESTOQUE (PRIVADO)
+# Somente livros físicos têm estoque. Para um e-book a resposta é 400.
+# @name cadastrarEstoque
+POST {{baseUrl}}/estoque
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "produto_id": 2,
+    "quantidade": 50
+}
+
+### 2. LISTAR ESTOQUES (PRIVADO)
+GET {{baseUrl}}/estoques
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 3. CONSULTAR ESTOQUE POR ID (PRIVADO)
+GET {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. ATUALIZAR ESTOQUE (PRIVADO)
+PUT {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "quantidade": 30
+}
+
+### 5. EXCLUIR ESTOQUE (PRIVADO)
+DELETE {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### PEDIDOS
+### ==========================================
+
+### 1. CADASTRAR PEDIDO (PRIVADO)
+# @name cadastrarPedido
+POST {{baseUrl}}/pedido
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "valor_total": 1500.00
+}
+
+### 2. LISTAR PEDIDOS DO USUÁRIO (PRIVADO)
+GET {{baseUrl}}/pedidos
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 3. CONSULTAR PEDIDO POR ID (PRIVADO)
+GET {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. ATUALIZAR PEDIDO (PRIVADO)
+PUT {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "EM_PREPARACAO"
+}
+
+### 5. ATUALIZAR PARCIALMENTE PEDIDO (PRIVADO)
+PATCH {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "CANCELADO"
+}
+
+### 6. FINALIZAR PEDIDO (PRIVADO)
+POST {{baseUrl}}/pedido/1/finalizar
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 7. EXCLUIR PEDIDO (PRIVADO)
+DELETE {{baseUrl}}/pedido/2
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 8. CONSULTAR OS E-BOOKS DO PEDIDO (PRIVADO)
+# Só libera depois que o pedido for pago (finalizado)
+GET {{baseUrl}}/pedido/1/ebooks
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### ITENS DO PEDIDO
+### ==========================================
+
+### 1. CADASTRAR ITEM DO PEDIDO (PRIVADO)
+# @name cadastrarItemPedido
+POST {{baseUrl}}/itemPedido
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "pedido_id": 1,
+    "produto_id": 2,
+    "quantidade": 2
+}
+
+### 1.1 CADASTRAR E-BOOK NO PEDIDO (PRIVADO)
+# Use o ID de um produto com formato EBOOK (somente 1 unidade)
+POST {{baseUrl}}/itemPedido
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "pedido_id": 1,
+    "produto_id": 3,
+    "quantidade": 1
+}
+
+### 2. LISTAR ITENS DO PEDIDO (PRIVADO)
+GET {{baseUrl}}/itemPedidos
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 3. CONSULTAR ITEM POR ID (PRIVADO)
+GET {{baseUrl}}/itemPedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. ATUALIZAR ITEM DO PEDIDO (PRIVADO)
+PUT {{baseUrl}}/itemPedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "quantidade": 3
+}
+
+### 5. EXCLUIR ITEM DO PEDIDO (PRIVADO)
+DELETE {{baseUrl}}/itemPedido/2
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+
+
+### ==========================================
+### ENTREGAS
+### ==========================================
+
+### 1. CADASTRAR ENTREGA (PRIVADO)
+# Só para pedidos com pelo menos 1 livro físico
+# @name cadastrarEntrega
+POST {{baseUrl}}/entrega
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "pedido_id": 3,
+    "endereco": "Rua das Flores, 100, Itapema - SC",
+    "codigo_rastreio": "BR123456789",
+    "status": "AGUARDANDO_ENVIO"
+}
+
+### 2. LISTAR ENTREGAS (PRIVADO)
+GET {{baseUrl}}/entregas
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 3. CONSULTAR ENTREGA POR ID (PRIVADO)
+GET {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. ATUALIZAR ENTREGA (PRIVADO)
+PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "ENVIADO",
+    "codigo_rastreio": "BR987654321"
+}
+
+### 5. ATUALIZAR PARCIALMENTE ENTREGA (PRIVADO)
+PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "ENVIADO"
+}
+
+### 6. ATUALIZAR PARCIALMENTE ENTREGA (PRIVADO)
+PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "ENTREGUE"
+}
+
+### 7. EXCLUIR ENTREGA (PRIVADO)
+DELETE {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+
+

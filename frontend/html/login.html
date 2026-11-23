@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Folha Viva</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/contas.css">
+
+    <script src="../js/comum.js" defer></script>
+    <script src="../js/login.js" defer></script>
+</head>
+
+<body>
+
+    <header class="topo">
+        <a href="../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../index.html">Início</a>
+            <a href="produto/produtos.html">Produtos</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="historico.html">Pedidos</a>
+            <a href="login.html" class="ativo">Minha conta</a>
+        </nav>
+
+        <a href="admin.html" class="admin-link">Área administrativa</a>
+    </header>
+
+    <main class="pagina-login">
+
+        <h1>Bem-vindo de volta!</h1>
+        <p>Entre na sua conta e continue sua jornada de leitura.</p>
+
+        <form id="formLogin">
+
+            <h2>Entrar na Folha Viva 📖</h2>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+
+            <button type="submit">Entrar</button>
+
+            <p class="cadastro-link">
+                Ainda não possui uma conta?
+                <a href="../html/usuarios/usuario_cadastrar.html">Cadastre-se</a>
+            </p>
+
+            <p class="cadastro-link">
+                <a href="admin_login.html">Acesso administrativo</a>
+            </p>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span>
+        <br>
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
+</html>
+

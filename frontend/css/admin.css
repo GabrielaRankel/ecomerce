@@ -1,0 +1,109 @@
+/* ======================================================
+   PAINEL ADMINISTRATIVO — html/admin.html
+   ====================================================== */
+
+main.painel-admin {
+    max-width: 1100px;
+}
+
+.introducao-admin {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.detalhe-retro {
+    color: var(--vinho);
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.introducao-admin p {
+    color: var(--tinta-suave);
+}
+
+/* ---------- NÚMEROS DA LOJA ---------- */
+
+.resumo-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.numero-resumo {
+    text-align: center;
+    background: var(--verde-escuro);
+    color: var(--papel);
+    border-radius: var(--raio);
+    padding: 18px;
+}
+
+.numero-resumo strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 1.9rem;
+    color: var(--ouro);
+}
+
+.numero-resumo span {
+    font-size: 0.88rem;
+}
+
+/* ---------- MÓDULOS ---------- */
+
+.modulos-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.card-modulo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--tinta);
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 5px solid var(--ouro);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 22px;
+    transition: transform 0.2s, border-top-color 0.2s;
+}
+
+.card-modulo:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--vinho);
+}
+
+.icone-modulo {
+    font-size: 2.2rem;
+}
+
+.card-modulo h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.card-modulo p {
+    color: var(--tinta-suave);
+    font-size: 0.92rem;
+}
+
+.acessar-modulo {
+    margin-top: auto;
+    padding-top: 8px;
+    color: var(--vinho);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.frase-final {
+    margin-top: 36px;
+    text-align: center;
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    color: var(--verde);
+}

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar usuários | Folha Viva</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/usuario-admin.css">
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/usuarios/usuario_listar.js" defer></script>
+</head>
+<body data-somente-admin>
+
+    <header class="topo">
+    <a href="../../index.html" class="logo">
+        <span class="logo-livro">📖</span>
+        <span>Folha Viva</span>
+    </a>
+
+    <nav class="menu">
+        <a href="../../index.html">Início</a>
+        <a href="../produto/produtos.html">Produtos</a>
+        <a href="../carrinho.html">Carrinho</a>
+        <a href="../historico.html">Pedidos</a>
+        <a href="../perfil.html">Minha conta</a>
+    </nav>
+
+    <a href="../admin.html" class="admin-link">
+        Administração
+    </a>
+</header>
+
+    <nav class="sub-menu-usuarios">
+        <a href="usuario_cadastrar.html">Cadastrar</a>
+        <a href="usuario_listar.html" class="ativo">Listar</a>
+        <a href="usuario_consultar_cod.html">Consultar código</a>
+        <a href="usuario_consultar_nome.html">Consultar nome</a>
+        <a href="usuario_atualizar.html">Atualizar</a>
+        <a href="usuario_atualizar_parcial.html">Atualização parcial</a>
+        <a href="usuario_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-usuario">
+        <h1>Usuários cadastrados</h1>
+        <p>Confira os usuários registrados na Folha Viva.</p>
+
+        <section>
+            <button type="button" id="btnListar">Carregar usuários</button>
+            <p id="mensagem"></p>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>CPF</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaUsuarios">
+                        <tr>
+                            <td colspan="6">Clique em "Carregar usuários".</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
+</body>
+</html>
+

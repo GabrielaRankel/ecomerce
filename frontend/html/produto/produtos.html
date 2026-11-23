@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo | Folha Viva</title>
+
+    <link rel="stylesheet" href="../../css/produtos.css">
+<link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/produto/produto-admin.css">
+
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/produto/produtos.js" defer></script>
+    <script src="../../js/produto/produtos_carrinho.js" defer></script>
+    <script src="../../js/produto/produtos_busca.js" defer></script>
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <a href="../../index.html" class="logo">
+            <span class="logo-livro">📖</span>
+            <span>Folha Viva</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="./produtos.html" class="ativo">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../login.html">Minha conta</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">
+            Área administrativa
+        </a>
+
+    </header>
+
+    <main>
+
+        <section class="cabecalho-catalogo">
+
+            <span class="etiqueta">✿ EXPLORE NOSSO CATÁLOGO ✿</span>
+
+            <h1>Um mundo de histórias.</h1>
+
+            <p>
+                Dos clássicos que marcaram gerações aos lançamentos
+                que merecem fazer parte da sua estante, em papel ou em e-book.
+            </p>
+
+            <span class="decoracao">✿</span>
+
+        </section>
+
+        <section class="ferramentas">
+
+            <div class="barra-busca">
+
+                <input
+                    type="text"
+                    id="campoBusca"
+                    placeholder="Busque por título ou escritor..."
+                >
+
+                <button type="button" id="btnBuscar">
+                    Buscar
+                </button>
+
+                <button type="button" id="btnLimparBusca">
+                    Limpar
+                </button>
+
+            </div>
+
+            <div class="area-importacao">
+
+                <select id="assuntoImportar" aria-label="Assunto a importar"></select>
+
+                <button type="button" id="btnImportar" class="botao-importar">
+                    Importar produtos
+                </button>
+
+                <p id="mensagemImportacao"></p>
+
+            </div>
+
+            <div class="filtros-produtos">
+
+                <label for="filtroFormato">Formato:</label>
+
+                <select id="filtroFormato">
+                    <option value="">Todos os formatos</option>
+                    <option value="FISICO">Livro físico</option>
+                    <option value="EBOOK">E-book</option>
+                </select>
+
+                <label for="filtroGenero">Gênero:</label>
+
+                <select id="filtroGenero">
+                    <option value="">Todos os gêneros</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <section class="atalhos-generos">
+            <h2>Explore por gênero</h2>
+            <div id="listaGeneros"></div>
+        </section>
+
+        <section id="listaProdutos" class="produtos-container"></section>
+
+    </main>
+
+    <div id="modalProduto" class="modal-produto">
+
+        <div class="conteudo-modal">
+
+            <button
+                class="fechar-modal"
+                onclick="fecharModal()"
+                aria-label="Fechar detalhes"
+            >
+                ×
+            </button>
+
+            <div id="detalhesProduto"></div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span>
+        <br>
+
+        <a
+            href="https://github.com/clariceheitmann"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-link"
+        >
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
+</html>
+

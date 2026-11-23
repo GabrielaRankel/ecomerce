@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto | Folha Viva</title>
+
+   <link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/produto/produto-admin.css">
+
+    <script src="../../js/comum.js" defer></script>
+    <script src="../../js/produto/produto_cadastrar.js" defer></script>
+</head>
+<body data-somente-admin>
+
+    
+<header class="topo">
+    <a href="../../index.html" class="logo">
+        <span class="logo-livro">📖</span>
+        <span>Folha Viva</span>
+    </a>
+
+    <nav class="menu">
+        <a href="../../index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="../carrinho.html">Carrinho</a>
+        <a href="../historico.html">Pedidos</a>
+        <a href="../perfil.html">Minha conta</a>
+    </nav>
+
+    <a href="../admin.html" class="admin-link">
+        Administração
+    </a>
+</header>
+
+
+    <nav class="sub-menu-produtos">
+        <a href="produtos.html">Catálogo</a>
+        <a href="produto_listar.html">Listar</a>
+        <a href="produto_cadastrar.html" class="ativo">Cadastrar</a>
+        <a href="produto_consultar.html">Consultar</a>
+        <a href="produto_atualizar.html">Atualizar</a>
+        <a href="produto_atualizar_parcial.html">Atualização parcial</a>
+        <a href="produto_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-produto">
+        <h1>Cadastrar produto</h1>
+        <p class="descricao-pagina">Adicione um novo livro ao nosso catálogo!</p>
+
+        <form id="form_produto">
+
+            <label>Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label>Escritor:</label>
+            <input type="text" id="escritor" required>
+
+            <label>Livro (título):</label>
+            <input type="text" id="colecao" required>
+
+            <label>Formato:</label>
+            <select id="formato" required>
+                <option value="">Selecione</option>
+                <option value="FISICO">Livro físico</option>
+                <option value="EBOOK">E-book</option>
+            </select>
+
+            <label>Ano da primeira publicação:</label>
+            <input type="number" id="ano" required>
+
+            <label>Preço:</label>
+            <input type="number" id="preco" step="0.01" min="0.01" required>
+
+            <label>Capa (caminho ou URL):</label>
+            <input type="text" id="imagem">
+
+            <div id="areaArquivo">
+
+                <label>Endereço do arquivo do e-book (link para download):</label>
+                <input type="url" id="arquivo_url" placeholder="https://...">
+
+                <small class="dica-campo">
+                    Usado apenas para e-books. Só o cliente que pagou vê este link.
+                </small>
+
+            </div>
+
+            <label>Descrição:</label>
+            <textarea id="descricao"></textarea>
+
+            <label>Categoria:</label>
+            <select id="categoria_id" required>
+                <option value="">Carregando categorias...</option>
+            </select>
+
+            <button type="submit">Cadastrar produto</button>
+        </form>
+    </main>
+
+    <footer>
+        <h2>📖 Folha Viva</h2>
+        <p>Sua livraria de livros físicos e e-books.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com livros e boas histórias ✿</span>
+        <br>
+        <a href="https://github.com/clariceheitmann"
+           target="_blank" rel="noopener noreferrer" class="github-link">
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
+</html>
+

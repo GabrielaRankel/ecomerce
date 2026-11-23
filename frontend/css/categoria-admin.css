@@ -1,0 +1,31 @@
+/* ======================================================
+   Categorias (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-categoria {
+    max-width: 960px;
+}
+
+main.pagina-admin-categoria h1 {
+    border-left: 6px solid var(--ouro);
+    padding-left: 12px;
+}
+
+main.pagina-admin-categoria .card,
+main.pagina-admin-categoria .painel {
+    border-left-color: var(--ouro);
+}
+
+main.pagina-admin-categoria th {
+    background: var(--ouro);
+}
+
+main.pagina-admin-categoria form {
+    border-top: 5px solid var(--ouro);
+}
+
+main.pagina-admin-categoria th {
+    color: var(--tinta);
+}

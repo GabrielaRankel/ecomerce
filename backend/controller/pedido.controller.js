@@ -1,0 +1,469 @@
+const Pedido = require('../models/Pedido')
+const Usuario = require('../models/Usuario')
+const ItemPedido = require('../models/ItemPedido')
+const Estoque = require('../models/Estoque')
+const Produto = require('../models/Produto')
+
+// Status em que o pagamento já foi confirmado (libera o download dos e-books)
+const STATUS_PAGOS = ['PAGO', 'EM_PREPARACAO', 'ENVIADO', 'ENTREGUE']
+
+const cadastrar = async (req, res) => {
+
+    const { valor_total } = req.body
+
+    if (valor_total === undefined) {
+        return res.status(400).json({
+            message: 'Valor total é obrigatório!'
+        })
+    }
+
+    try {
+
+        // O ID do usuário vem do token JWT
+        const usuario_id = req.usuario.id
+
+        const usuario = await Usuario.findByPk(usuario_id)
+
+        if (!usuario) {
+            return res.status(404).json({
+                message: 'Usuario não encontrado!'
+            })
+        }
+
+        const pedido = await Pedido.create({
+            usuario_id,
+            valor_total
+        })
+
+        res.status(201).json({
+            message: 'Pedido cadastrado com sucesso!',
+            pedido
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao cadastrar pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao cadastrar pedido!'
+        })
+    }
+}
+
+
+
+const listar = async (req, res) => {
+    try {
+        // Busca somente os pedidos do usuário autenticado
+        const pedidos = await Pedido.findAll({
+            where: {
+                usuario_id: req.usuario.id
+            },
+            include: [
+                {
+                    model: ItemPedido,
+                    as: 'itens',
+                    include: [
+                        {
+                            model: Produto,
+                            as: 'produto',
+                            attributes: ['id', 'nome', 'escritor', 'colecao', 'formato', 'preco']
+                        }
+                    ]
+                }
+            ],
+            order: [['data_pedido', 'DESC']]
+        })
+
+        res.status(200).json(pedidos)
+
+    } catch (err) {
+        console.error('Erro ao listar pedidos!', err)
+
+        res.status(500).json({
+            message: 'Erro ao listar pedidos!'
+        })
+    }
+}
+
+
+
+const consultarPorCod = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+        res.status(200).json(pedido)
+
+    } catch (err) {
+
+        console.error('Erro ao consultar pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao consultar pedido!'
+        })
+    }
+}
+
+
+const atualizar = async (req, res) => {
+
+    const id = req.params.id
+    const { status } = req.body
+
+const valores = { status }
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+        await pedido.update(valores)
+
+        res.status(200).json(pedido)
+
+    } catch (err) {
+
+        console.error('Erro ao atualizar pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao atualizar pedido!'
+        })
+    }
+}
+
+
+const atualizarParcial = async (req, res) => {
+
+    const id = req.params.id
+    const { status } = req.body
+
+const valores = { status }
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+        await pedido.update(valores)
+
+        res.status(200).json(pedido)
+
+    } catch (err) {
+
+        console.error('Erro ao atualizar pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao atualizar pedido!'
+        })
+    }
+}
+
+
+const excluir = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+        await pedido.destroy()
+
+        res.status(200).json({
+            message: 'Pedido excluído com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao excluir pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao excluir pedido!'
+        })
+    }
+}
+
+
+const finalizar = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+
+        if (pedido.status !== 'AGUARDANDO_PAGAMENTO') {
+
+            return res.status(400).json({
+                message: 'Este pedido não pode ser finalizado!'
+            })
+
+        }
+
+
+        const itens = await ItemPedido.findAll({
+            where: {
+                pedido_id: id
+            }
+        })
+
+
+        if (itens.length === 0) {
+
+            return res.status(400).json({
+                message: 'Este pedido não possui itens!'
+            })
+
+        }
+
+
+        // Somente os livros físicos controlam estoque.
+        // Os e-books não possuem estoque.
+        const itensFisicos = []
+
+        for (const item of itens) {
+
+            const produto = await Produto.findByPk(item.produto_id)
+
+            if (!produto) {
+
+                return res.status(404).json({
+                    message:
+                        `Produto ${item.produto_id} não encontrado!`
+                })
+
+            }
+
+
+            if (produto.formato === 'EBOOK') {
+                continue
+            }
+
+
+            const estoque = await Estoque.findOne({
+                where: {
+                    produto_id: item.produto_id
+                }
+            })
+
+
+            if (!estoque) {
+
+                return res.status(404).json({
+                    message:
+                        `Estoque do produto ${item.produto_id} não encontrado!`
+                })
+
+            }
+
+
+            if (estoque.quantidade < item.quantidade) {
+
+                return res.status(400).json({
+                    message:
+                        `Estoque insuficiente para o produto ${item.produto_id}!`
+                })
+
+            }
+
+            itensFisicos.push(item)
+
+        }
+
+
+        for (const item of itensFisicos) {
+
+            const estoque = await Estoque.findOne({
+                where: {
+                    produto_id: item.produto_id
+                }
+            })
+
+            await estoque.update({
+                quantidade: estoque.quantidade - item.quantidade
+            })
+
+        }
+
+
+        await pedido.update({
+            status: 'PAGO'
+        })
+
+
+        res.status(200).json({
+
+            message: 'Pedido finalizado com sucesso!',
+
+            pedido
+
+        })
+
+    } catch (err) {
+
+        console.error(
+            'Erro ao finalizar pedido!',
+            err
+        )
+
+        res.status(500).json({
+            message: 'Erro ao finalizar pedido!'
+        })
+
+    }
+}
+
+
+// ======================================================
+// E-BOOKS DO PEDIDO (liberados após o pagamento)
+// ======================================================
+
+const ebooks = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+
+        if (!STATUS_PAGOS.includes(pedido.status)) {
+
+            return res.status(403).json({
+                message: 'O pagamento deste pedido ainda não foi confirmado!'
+            })
+
+        }
+
+
+        const itens = await ItemPedido.findAll({
+            where: {
+                pedido_id: id
+            },
+            include: [
+                {
+                    model: Produto,
+                    as: 'produto',
+                    where: {
+                        formato: 'EBOOK'
+                    },
+                    attributes: ['id', 'escritor', 'colecao', 'arquivo_url']
+                }
+            ]
+        })
+
+
+        if (itens.length === 0) {
+
+            return res.status(404).json({
+                message: 'Este pedido não possui e-books!'
+            })
+
+        }
+
+
+        const resultado = itens.map(item => ({
+
+            produto_id: item.produto.id,
+
+            escritor: item.produto.escritor,
+
+            titulo: item.produto.colecao,
+
+            arquivo_url: item.produto.arquivo_url
+
+        }))
+
+        res.status(200).json(resultado)
+
+    } catch (err) {
+
+        console.error('Erro ao consultar e-books do pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao consultar e-books do pedido!'
+        })
+
+    }
+}
+
+
+module.exports = {
+    cadastrar,
+    listar,
+    consultarPorCod,
+    atualizar,
+    atualizarParcial,
+    excluir,
+    finalizar,
+    ebooks
+}

@@ -1,0 +1,27 @@
+/* ======================================================
+   Entregas (administração)
+   O padrão de formulários, tabelas e submenu está no
+   global.css; aqui ficam só os detalhes deste módulo.
+   ====================================================== */
+
+main.pagina-admin-entrega {
+    max-width: 960px;
+}
+
+main.pagina-admin-entrega h1 {
+    border-left: 6px solid var(--vinho);
+    padding-left: 12px;
+}
+
+main.pagina-admin-entrega .card,
+main.pagina-admin-entrega .painel {
+    border-left-color: var(--vinho);
+}
+
+main.pagina-admin-entrega th {
+    background: var(--vinho);
+}
+
+main.pagina-admin-entrega form {
+    border-top: 5px solid var(--vinho);
+}

@@ -1,0 +1,51 @@
+/* ======================================================
+   CONTAS — login, minha conta e gerenciar usuários
+   html/login.html, html/perfil.html, html/usuarios.html
+   ====================================================== */
+
+main.pagina-login,
+main.pagina-perfil {
+    max-width: 560px;
+}
+
+main.pagina-login > h1,
+main.pagina-login > p {
+    text-align: center;
+}
+
+main.pagina-login > p,
+main.pagina-perfil > p {
+    color: var(--tinta-suave);
+}
+
+main.pagina-login form {
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 5px solid var(--ouro);
+}
+
+main.pagina-perfil form {
+    max-width: none;
+    border-top: 5px solid var(--verde);
+}
+
+.cadastro-link {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.92rem;
+}
+
+/* Gerenciar usuários (administração) */
+main.container {
+    max-width: 1000px;
+}
+
+main.container > p {
+    color: var(--tinta-suave);
+}
+
+main.container table button {
+    background: var(--vinho);
+    padding: 5px 14px;
+    font-size: 0.82rem;
+}

@@ -1,0 +1,278 @@
+const Produto = require('../models/Produto')
+const { Estoque, Categoria } = require('../models/rel')
+
+const FORMATOS = ['FISICO', 'EBOOK']
+
+const cadastrar = async (req, res) => {
+
+    const valores = req.body
+
+    if (!valores.nome || !valores.escritor || !valores.colecao ||
+        !valores.formato || !valores.ano || !valores.preco ||
+        !valores.categoria_id) {
+
+        return res.status(400).json({
+            message: 'Todos os campos obrigatórios devem ser preenchidos!'
+        })
+    }
+
+    if (!FORMATOS.includes(valores.formato)) {
+
+        return res.status(400).json({
+            message: 'O formato deve ser FISICO ou EBOOK!'
+        })
+    }
+
+    try {
+
+        const produto = await Produto.create(valores)
+
+        res.status(201).json({
+            message: 'Produto cadastrado com sucesso!',
+            produto
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao cadastrar produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao cadastrar produto!'
+        })
+    }
+}
+
+
+const listar = async (req, res) => {
+
+    try {
+
+        // O endereço do arquivo do e-book nunca é enviado na listagem
+        const produtos = await Produto.findAll({
+            attributes: {
+                exclude: ['arquivo_url']
+            },
+            include: [
+                {
+                    model: Estoque,
+                    as: 'estoque'
+                },
+                {
+                    model: Categoria,
+                    as: 'categoria'
+                }
+            ]
+        })
+
+        res.status(200).json(produtos)
+
+    } catch (err) {
+
+        console.error('Erro ao listar produtos!', err)
+
+        res.status(500).json({
+            message: 'Erro ao listar produtos!'
+        })
+    }
+}
+
+
+const consultarPorCod = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const produto = await Produto.findByPk(id, {
+            attributes: {
+                exclude: ['arquivo_url']
+            }
+        })
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado!'
+            })
+        }
+
+        res.status(200).json(produto)
+
+    } catch (err) {
+
+        console.error('Erro ao consultar produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao consultar produto!'
+        })
+    }
+}
+
+
+const consultarPorNome = async (req, res) => {
+
+    const nome = req.params.nome
+
+    try {
+
+        const produto = await Produto.findOne({
+            where: {
+                nome: nome
+            },
+            attributes: {
+                exclude: ['arquivo_url']
+            }
+        })
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado!'
+            })
+        }
+
+        res.status(200).json(produto)
+
+    } catch (err) {
+
+        console.error('Erro ao consultar produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao consultar produto!'
+        })
+    }
+}
+
+
+const excluir = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const produto = await Produto.findByPk(id)
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado!'
+            })
+        }
+
+        await Produto.destroy({
+            where: {
+                id: id
+            }
+        })
+
+        res.status(200).json({
+            message: 'Produto excluído com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao excluir produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao excluir produto!'
+        })
+    }
+}
+
+
+const atualizar = async (req, res) => {
+
+    const id = req.params.id
+    const valores = req.body
+
+    if (valores.formato && !FORMATOS.includes(valores.formato)) {
+
+        return res.status(400).json({
+            message: 'O formato deve ser FISICO ou EBOOK!'
+        })
+    }
+
+    try {
+
+        const produto = await Produto.findByPk(id)
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado!'
+            })
+        }
+
+        await Produto.update(valores, {
+            where: {
+                id: id
+            }
+        })
+
+        const atualizado = await Produto.findByPk(id, {
+            attributes: {
+                exclude: ['arquivo_url']
+            }
+        })
+
+        res.status(200).json(atualizado)
+
+    } catch (err) {
+
+        console.error('Erro ao atualizar produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao atualizar produto!'
+        })
+    }
+}
+
+
+const atualizarParcial = async (req, res) => {
+
+    const id = req.params.id
+    const valores = req.body
+
+    if (valores.formato && !FORMATOS.includes(valores.formato)) {
+
+        return res.status(400).json({
+            message: 'O formato deve ser FISICO ou EBOOK!'
+        })
+    }
+
+    try {
+
+        const produto = await Produto.findByPk(id)
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado!'
+            })
+        }
+
+        await produto.update(valores)
+
+        const atualizado = await Produto.findByPk(id, {
+            attributes: {
+                exclude: ['arquivo_url']
+            }
+        })
+
+        res.status(200).json(atualizado)
+
+    } catch (err) {
+
+        console.error('Erro ao atualizar produto!', err)
+
+        res.status(500).json({
+            message: 'Erro ao atualizar produto!'
+        })
+    }
+}
+
+
+module.exports = {
+    cadastrar,
+    listar,
+    consultarPorCod,
+    consultarPorNome,
+    atualizar,
+    atualizarParcial,
+    excluir
+}

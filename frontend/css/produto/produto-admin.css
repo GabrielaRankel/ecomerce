@@ -1,0 +1,59 @@
+/* ======================================================
+   PRODUTOS (administração) — html/produto/produto_*.html
+   Também é carregado pelo catálogo, por isso só estiliza
+   classes exclusivas das páginas de administração.
+   ====================================================== */
+
+main.pagina-admin-produto {
+    max-width: 1000px;
+}
+
+main.pagina-admin-produto h1 {
+    border-left: 6px solid var(--vinho);
+    padding-left: 12px;
+}
+
+.sub-menu-produtos a[href="produtos.html"] {
+    background: var(--ouro);
+    border-color: var(--ouro);
+    color: var(--tinta);
+    font-weight: 600;
+}
+
+/* Lista de produtos cadastrados */
+#lista_produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+#lista_produtos .card {
+    margin-bottom: 0;
+    border-left-color: var(--vinho);
+}
+
+#lista_produtos .card img {
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: var(--sombra);
+}
+
+#lista_produtos .card p {
+    font-size: 0.9rem;
+}
+
+/* Resultado da consulta */
+#resultado .card {
+    max-width: 520px;
+}
+
+/* Campo do arquivo do e-book */
+#areaArquivo {
+    margin-top: 6px;
+    padding: 4px 14px 12px;
+    border: 1px dashed var(--vinho);
+    border-radius: 8px;
+    background: #FBF1F1;
+}
