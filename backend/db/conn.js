@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize')
 const db = new Sequelize(
     process.env.DB_NAME || 'ecommer_livraria',
     process.env.DB_USER || 'root',
-    process.env.DB_PASSWORD || 'sua_nova_senha',
+    process.env.DB_PASSWORD || 'senai',
     {
         host: process.env.DB_HOST || 'localhost',
         dialect: 'mysql',
