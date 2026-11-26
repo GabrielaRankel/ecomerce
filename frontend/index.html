@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,96 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Folha Viva | Sua livraria online</title>
+    <meta name="theme-color" content="#0c0c0e">
+    <link rel="icon" type="image/svg+xml" href="./imagens/logo-icone.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/loja.css">
     <link rel="stylesheet" href="./css/principal.css">
     <script src="./js/comum.js" defer></script>
+    <script src="./js/visual.js" defer></script>
     <script src="./js/index.js" defer></script>
 </head>
 
 <body>
 
     <header class="topo">
-        <a href="index.html" class="logo">
-            <span class="logo-livro">📖</span>
-            <span>Folha Viva</span>
+
+        <a href="index.html" class="logo" aria-label="Folha Viva — início">
+            <span class="logo-marca" data-icone="marca"></span>
+            <span class="logo-texto">
+                <strong>Folha Viva</strong>
+                <small>Livraria</small>
+            </span>
         </a>
 
         <nav class="menu">
-            <a href="index.html" class="ativo">Início</a>
-            <a href="./html/produto/produtos.html">Produtos</a>
-            <a href="./html/carrinho.html">Carrinho</a>
-            <a href="./html/historico.html">Pedidos</a>
-            <a href="./html/login.html">Minha conta</a>
-            <a href="./html/login.html">Sair</a>
-        </nav>
-        
+            <a href="index.html" class="menu-texto ativo">Início</a>
+            <a href="html/produto/produtos.html" class="menu-texto">Produtos</a>
 
-        <a href="./html/admin.html" class="admin-link">
-            Área administrativa
-        </a>
+            <span class="menu-separador" aria-hidden="true"></span>
+
+            <a href="html/carrinho.html" class="menu-icone menu-carrinho" data-rotulo="Carrinho" aria-label="Carrinho">
+                <i class="icone" data-icone="carrinho"></i>
+                <span class="selo" data-selo-carrinho hidden>0</span>
+                <span class="sr">Carrinho</span>
+            </a>
+            <a href="html/historico.html" class="menu-icone" data-rotulo="Pedidos" aria-label="Pedidos">
+                <i class="icone" data-icone="pedidos"></i>
+                <span class="sr">Pedidos</span>
+            </a>
+            <a href="html/login.html" class="menu-icone" data-rotulo="Minha conta" aria-label="Minha conta">
+                <i class="icone" data-icone="conta"></i>
+                <span class="sr">Minha conta</span>
+            </a>
+            <a href="html/login.html" class="menu-icone" data-rotulo="Sair" data-so-logado aria-label="Sair">
+                <i class="icone" data-icone="sair"></i>
+                <span class="sr">Sair</span>
+            </a>
+        </nav>
+
+        <a href="html/admin.html" class="admin-link"><i class="icone" data-icone="admin"></i><span>Área administrativa</span></a>
     </header>
 
     <main>
 
         <section class="banner">
 
-            <div class="banner-texto">
+            <div class="banner-fundo" aria-hidden="true"></div>
+            <div class="banner-particulas" aria-hidden="true"></div>
 
-                <span class="subtitulo">✿ Toda página é uma nova aventura ✿</span>
+            <div class="limite banner-conteudo">
 
-                <h1>
-                    Mergulhe numa
-                    <span>boa história!</span>
-                </h1>
+                <div class="banner-texto">
 
-                <p>
-                    Descubra clássicos, explore novos autores e encontre
-                    seus livros favoritos em papel ou em e-book,
-                    para ler onde e quando quiser.
-                </p>
+                    <span class="subtitulo">Toda página é uma nova aventura</span>
 
-                <a href="./html/produto/produtos.html" class="botao">
-                    Explorar catálogo →
-                </a>
+                    <h1>
+                        Mergulhe numa
+                        <span>boa história!</span>
+                    </h1>
 
-                <div class="area-importacao">
+                    <p>
+                        Descubra clássicos, explore novos autores e encontre
+                        seus livros favoritos em papel ou em e-book,
+                        para ler onde e quando quiser.
+                    </p>
 
-                    <select id="assuntoImportar" aria-label="Assunto a importar"></select>
+                    <a href="./html/produto/produtos.html" class="botao">
+                        Explorar catálogo <i class="icone" data-icone="seta"></i>
+                    </a>
 
-                    <button type="button" id="btnImportar" class="botao-importar">
-                        Importar produtos
-                    </button>
+                    <div class="area-importacao">
 
-                    <p id="mensagemImportacao"></p>
+                        <select id="assuntoImportar" aria-label="Assunto a importar"></select>
 
-                </div>
+                        <button type="button" id="btnImportar" class="botao-importar">
+                            Importar produtos
+                        </button>
 
-            </div>
+                        <p id="mensagemImportacao"></p>
 
-            <div class="banner-arte">
-
-                <div class="estrela estrela1">✦</div>
-                <div class="estrela estrela2">✧</div>
-
-                <div class="livro-capa">
-                    <div class="livro-lombada"></div>
-                    <div class="livro-frente">
-                        <span>Era uma vez…</span>
                     </div>
+
                 </div>
 
-                <div class="flor">✿</div>
+                <div class="banner-arte">
+
+                    <div class="vantagem">
+                        <i class="icone" data-icone="livro"></i>
+                        <div>
+                            <strong>Livros físicos</strong>
+                            <small>Edições para a estante, com entrega no seu endereço.</small>
+                        </div>
+                    </div>
+
+                    <div class="vantagem">
+                        <i class="icone" data-icone="ebook"></i>
+                        <div>
+                            <strong>E-books</strong>
+                            <small>Download liberado assim que o pagamento é confirmado.</small>
+                        </div>
+                    </div>
+
+                    <div class="vantagem">
+                        <i class="icone" data-icone="estante"></i>
+                        <div>
+                            <strong>Catálogo por gênero</strong>
+                            <small>Do romance à ficção científica, tudo organizado.</small>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 
         </section>
 
-        <section class="frase">
-            <span>✿</span>
+        <section class="frase revelar">
             <p>Um bom livro é um bom abrigo.</p>
-            <span>✿</span>
         </section>
 
-        <section class="categorias">
+        <section class="categorias revelar">
 
             <h2>Escolha seu formato favorito</h2>
             <p class="descricao">Cada formato tem seu próprio charme.</p>
@@ -103,15 +143,17 @@
             <div class="categoria-cards">
 
                 <a href="./html/produto/produtos.html" class="categoria fisico">
-                    <span>📕</span>
+                    <span class="icone-grande"><i class="icone" data-icone="livro"></i></span>
                     <h3>Livros físicos</h3>
-                    <p>O cheirinho de papel e a estante cheia. Entrega no seu endereço.</p>
+                    <p>O cheiro de papel e a estante cheia. Entrega no seu endereço.</p>
+                    <span class="seta"><i class="icone" data-icone="seta"></i></span>
                 </a>
 
                 <a href="./html/produto/produtos.html" class="categoria ebook">
-                    <span>📱</span>
+                    <span class="icone-grande"><i class="icone" data-icone="ebook"></i></span>
                     <h3>E-books</h3>
                     <p>Compre e baixe na hora, sem esperar entrega.</p>
+                    <span class="seta"><i class="icone" data-icone="seta"></i></span>
                 </a>
 
             </div>
@@ -120,11 +162,11 @@
 
         <!-- DESTAQUES (carregados da API pelo js/index.js) -->
 
-        <section class="vitrine">
+        <section class="vitrine revelar">
 
             <div class="vitrine-titulo">
                 <span>PARA TER NA ESTANTE</span>
-                <h2>Livros físicos em destaque ✦</h2>
+                <h2>Livros físicos em destaque</h2>
                 <p>Edições que merecem um lugar na sua estante.</p>
             </div>
 
@@ -134,11 +176,11 @@
 
         </section>
 
-        <section class="promocoes">
+        <section class="promocoes revelar">
 
             <div class="vitrine-titulo">
                 <span>LEIA AGORA MESMO</span>
-                <h2>E-books em destaque ♡</h2>
+                <h2>E-books em destaque</h2>
                 <p>Download liberado assim que o pagamento é confirmado.</p>
             </div>
 
@@ -148,16 +190,15 @@
 
         </section>
 
-        <section class="destaque">
+        <section class="destaque revelar">
 
             <div>
                 <span>UMA VIAGEM LITERÁRIA</span>
                 <h2>Encontre a próxima história da sua vida.</h2>
             </div>
 
-            <a href="./html/produto/produtos.html"
-               class="botao botao-claro">
-                Ver catálogo
+            <a href="./html/produto/produtos.html" class="botao">
+                Ver catálogo <i class="icone" data-icone="seta"></i>
             </a>
 
         </section>
@@ -165,20 +206,21 @@
     </main>
 
     <footer>
-        <h2>📖 Folha Viva</h2>
+        <div class="rodape-marca">
+            <span class="logo-marca" data-icone="marca"></span>
+            <strong>Folha Viva</strong>
+        </div>
         <p>Sua livraria de livros físicos e e-books.</p>
         <p>Desenvolvido por Gabriela Rankel</p>
-        <span>Feito com livros e boas histórias ✿</span><br>
 
         <a href="https://github.com/GabrielaRankel/ecomerce"
            target="_blank"
            rel="noopener noreferrer"
            class="github-link">
-            ✿ Meu GitHub
+            <i class="icone" data-icone="github"></i>
+            <span>GitHub</span>
         </a>
-
     </footer>
 
 </body>
 </html>
-

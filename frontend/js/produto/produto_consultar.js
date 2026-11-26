@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 
 document.getElementById('form_consultar').addEventListener('submit', async (e) => {
@@ -36,4 +35,3 @@ document.getElementById('form_consultar').addEventListener('submit', async (e) =
         alert('Erro ao consultar produto!')
     }
 })
-

@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -64,4 +63,3 @@ async function buscarEstoque() {
 }
 
 btnBuscar.addEventListener('click', buscarEstoque)
-

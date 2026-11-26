@@ -266,9 +266,3 @@ document.addEventListener('DOMContentLoaded', () => {
     exibirCarrinho()
 
 })
-
-
-
-
-
-

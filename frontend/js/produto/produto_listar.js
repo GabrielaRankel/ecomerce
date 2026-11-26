@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 
 async function listarProdutos() {
@@ -63,4 +62,3 @@ async function listarProdutos() {
 }
 
 listarProdutos()
-

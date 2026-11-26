@@ -1,4 +1,3 @@
-
 const btnExcluir = document.getElementById('btnExcluir')
 const mensagem = document.getElementById('mensagem')
 
@@ -40,4 +39,3 @@ async function excluirEntrega() {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 }
-

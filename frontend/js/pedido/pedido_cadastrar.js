@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -35,4 +34,3 @@ document.getElementById('form_pedido').addEventListener('submit', async (e) => {
         alert('Erro ao cadastrar pedido!')
     }
 })
-

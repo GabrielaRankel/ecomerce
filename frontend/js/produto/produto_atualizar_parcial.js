@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -90,4 +89,3 @@ document.getElementById('form_atualizar').addEventListener('submit', async (e) =
 })
 
 carregarCategorias()
-

@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 
 const token = localStorage.getItem('token')
@@ -254,4 +253,3 @@ if (token) {
     carregarVendas()
     carregarEstoque()
 }
-

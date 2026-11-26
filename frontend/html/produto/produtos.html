@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Catálogo | Folha Viva</title>
-
+    <meta name="theme-color" content="#0c0c0e">
+    <link rel="icon" type="image/svg+xml" href="../../imagens/logo-icone.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/loja.css">
     <link rel="stylesheet" href="../../css/produtos.css">
-<link rel="stylesheet" href="../../css/global.css">
-<link rel="stylesheet" href="../../css/produto/produto-admin.css">
 
     <script src="../../js/comum.js" defer></script>
+    <script src="../../js/visual.js" defer></script>
     <script src="../../js/produto/produtos.js" defer></script>
     <script src="../../js/produto/produtos_carrinho.js" defer></script>
     <script src="../../js/produto/produtos_busca.js" defer></script>
@@ -22,30 +25,47 @@
 
     <header class="topo">
 
-        <a href="../../index.html" class="logo">
-            <span class="logo-livro">📖</span>
-            <span>Folha Viva</span>
+        <a href="../../index.html" class="logo" aria-label="Folha Viva — início">
+            <span class="logo-marca" data-icone="marca"></span>
+            <span class="logo-texto">
+                <strong>Folha Viva</strong>
+                <small>Livraria</small>
+            </span>
         </a>
 
         <nav class="menu">
-            <a href="../../index.html">Início</a>
-            <a href="./produtos.html" class="ativo">Produtos</a>
-            <a href="../carrinho.html">Carrinho</a>
-            <a href="../historico.html">Pedidos</a>
-            <a href="../login.html">Minha conta</a>
+            <a href="../../index.html" class="menu-texto">Início</a>
+            <a href="./produtos.html" class="menu-texto ativo">Produtos</a>
+
+            <span class="menu-separador" aria-hidden="true"></span>
+
+            <a href="../carrinho.html" class="menu-icone menu-carrinho" data-rotulo="Carrinho" aria-label="Carrinho">
+                <i class="icone" data-icone="carrinho"></i>
+                <span class="selo" data-selo-carrinho hidden>0</span>
+                <span class="sr">Carrinho</span>
+            </a>
+            <a href="../historico.html" class="menu-icone" data-rotulo="Pedidos" aria-label="Pedidos">
+                <i class="icone" data-icone="pedidos"></i>
+                <span class="sr">Pedidos</span>
+            </a>
+            <a href="../login.html" class="menu-icone" data-rotulo="Minha conta" aria-label="Minha conta">
+                <i class="icone" data-icone="conta"></i>
+                <span class="sr">Minha conta</span>
+            </a>
+            <a href="../login.html" class="menu-icone" data-rotulo="Sair" data-so-logado aria-label="Sair">
+                <i class="icone" data-icone="sair"></i>
+                <span class="sr">Sair</span>
+            </a>
         </nav>
 
-        <a href="../admin.html" class="admin-link">
-            Área administrativa
-        </a>
-
+        <a href="../admin.html" class="admin-link"><i class="icone" data-icone="admin"></i><span>Área administrativa</span></a>
     </header>
 
     <main>
 
         <section class="cabecalho-catalogo">
 
-            <span class="etiqueta">✿ EXPLORE NOSSO CATÁLOGO ✿</span>
+            <span class="etiqueta">EXPLORE NOSSO CATÁLOGO</span>
 
             <h1>Um mundo de histórias.</h1>
 
@@ -54,7 +74,7 @@
                 que merecem fazer parte da sua estante, em papel ou em e-book.
             </p>
 
-            <span class="decoracao">✿</span>
+            <span class="decoracao" aria-hidden="true"></span>
 
         </section>
 
@@ -138,22 +158,21 @@
     </div>
 
     <footer>
-        <h2>📖 Folha Viva</h2>
+        <div class="rodape-marca">
+            <span class="logo-marca" data-icone="marca"></span>
+            <strong>Folha Viva</strong>
+        </div>
         <p>Sua livraria de livros físicos e e-books.</p>
         <p>Desenvolvido por Gabriela Rankel</p>
-        <span>Feito com livros e boas histórias ✿</span>
-        <br>
 
-        <a
-            href="https://github.com/GabrielaRankel/ecomerce"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="github-link"
-        >
-            ✿ Meu GitHub
+        <a href="https://github.com/GabrielaRankel/ecomerce"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            <i class="icone" data-icone="github"></i>
+            <span>GitHub</span>
         </a>
     </footer>
 
 </body>
 </html>
-

@@ -1,4 +1,3 @@
-
 const codigo = document.getElementById('codigo')
 const nome = document.getElementById('nome')
 const btnBuscarCodigo = document.getElementById('btnBuscarCodigo')
@@ -191,5 +190,3 @@ async function excluirUsuario(id, nome) {
         mostrarMensagem('Não foi possível conectar ao servidor.')
     }
 }
-
-

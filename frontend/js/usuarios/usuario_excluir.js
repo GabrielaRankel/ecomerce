@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -49,4 +48,3 @@ formulario.addEventListener('submit', async (event) => {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 })
-

@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 const listaPedidos = document.getElementById('listaPedidos')
@@ -219,4 +218,3 @@ async function carregarPedidos() {
         `
     }
 }
-

@@ -1,4 +1,3 @@
-
 const btnConsultar = document.getElementById('btnConsultar')
 const resultado = document.getElementById('resultado')
 const mensagem = document.getElementById('mensagem')
@@ -49,4 +48,3 @@ async function consultarEntrega() {
 function formatarData(data) {
     return data ? new Date(data).toLocaleString('pt-BR') : '-'
 }
-

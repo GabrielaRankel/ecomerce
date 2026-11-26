@@ -6,37 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Carrinho | Folha Viva</title>
-
+    <meta name="theme-color" content="#0c0c0e">
+    <link rel="icon" type="image/svg+xml" href="../imagens/logo-icone.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/loja.css">
     <link rel="stylesheet" href="../css/carrinho.css">
-    <link rel="stylesheet" href="../css/global.css">
 
     <script src="../js/comum.js" defer></script>
+    <script src="../js/visual.js" defer></script>
     <script src="../js/carrinho.js" defer></script>
 </head>
 
 <body data-requer-login>
 
     <header class="topo">
-        <a href="../index.html" class="logo">
-            <span class="logo-livro">📖</span>
-            <span>Folha Viva</span>
+
+        <a href="../index.html" class="logo" aria-label="Folha Viva — início">
+            <span class="logo-marca" data-icone="marca"></span>
+            <span class="logo-texto">
+                <strong>Folha Viva</strong>
+                <small>Livraria</small>
+            </span>
         </a>
 
         <nav class="menu">
-            <a href="../index.html">Início</a>
-            <a href="produto/produtos.html">Produtos</a>
-            <a href="carrinho.html" class="ativo">Carrinho</a>
-            <a href="historico.html">Pedidos</a>
-            <a href="login.html">Minha conta</a>
+            <a href="../index.html" class="menu-texto">Início</a>
+            <a href="produto/produtos.html" class="menu-texto">Produtos</a>
+
+            <span class="menu-separador" aria-hidden="true"></span>
+
+            <a href="carrinho.html" class="menu-icone menu-carrinho ativo" data-rotulo="Carrinho" aria-label="Carrinho">
+                <i class="icone" data-icone="carrinho"></i>
+                <span class="selo" data-selo-carrinho hidden>0</span>
+                <span class="sr">Carrinho</span>
+            </a>
+            <a href="historico.html" class="menu-icone" data-rotulo="Pedidos" aria-label="Pedidos">
+                <i class="icone" data-icone="pedidos"></i>
+                <span class="sr">Pedidos</span>
+            </a>
+            <a href="login.html" class="menu-icone" data-rotulo="Minha conta" aria-label="Minha conta">
+                <i class="icone" data-icone="conta"></i>
+                <span class="sr">Minha conta</span>
+            </a>
+            <a href="login.html" class="menu-icone" data-rotulo="Sair" data-so-logado aria-label="Sair">
+                <i class="icone" data-icone="sair"></i>
+                <span class="sr">Sair</span>
+            </a>
         </nav>
 
-        <a href="admin.html" class="admin-link">Área administrativa</a>
+        <a href="admin.html" class="admin-link"><i class="icone" data-icone="admin"></i><span>Área administrativa</span></a>
     </header>
 
     <main class="pagina-carrinho">
 
         <section class="cabecalho-carrinho">
-            <span>✿ SUA PRÓXIMA LEITURA ESTÁ QUASE LÁ ✿</span>
+            <span>SUA PRÓXIMA LEITURA ESTÁ QUASE LÁ</span>
             <h1>Seu carrinho</h1>
             <p>Seus próximos livros favoritos estão aqui!</p>
         </section>
@@ -46,20 +72,21 @@
     </main>
 
     <footer>
-        <h2>📖 Folha Viva</h2>
+        <div class="rodape-marca">
+            <span class="logo-marca" data-icone="marca"></span>
+            <strong>Folha Viva</strong>
+        </div>
         <p>Sua livraria de livros físicos e e-books.</p>
         <p>Desenvolvido por Gabriela Rankel</p>
-        <span>Feito com livros e boas histórias ✿</span>
-        <br>
 
         <a href="https://github.com/GabrielaRankel/ecomerce"
            target="_blank"
            rel="noopener noreferrer"
            class="github-link">
-            ✿ Meu GitHub
+            <i class="icone" data-icone="github"></i>
+            <span>GitHub</span>
         </a>
     </footer>
 
 </body>
 </html>
-

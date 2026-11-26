@@ -1,4 +1,3 @@
-
 const btnListar = document.getElementById('btnListar')
 const tabela = document.getElementById('tabelaEntregas')
 const mensagem = document.getElementById('mensagem')
@@ -53,4 +52,3 @@ async function listarEntregas() {
 function formatarData(data) {
     return data ? new Date(data).toLocaleString('pt-BR') : '-'
 }
-

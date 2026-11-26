@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 
 const btnListar = document.getElementById('btnListar')
@@ -49,4 +48,3 @@ async function listarCategorias() {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 }
-

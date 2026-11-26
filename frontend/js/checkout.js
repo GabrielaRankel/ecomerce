@@ -1,4 +1,3 @@
-
 const resumoCheckout = document.getElementById('resumoCheckout')
 const formulario = document.getElementById('formCheckout')
 
@@ -334,4 +333,3 @@ formulario.addEventListener('submit', async (event) => {
     }
 
 })
-

@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -63,4 +62,3 @@ async function listarUsuarios() {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 }
-

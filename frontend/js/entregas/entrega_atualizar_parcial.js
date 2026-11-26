@@ -1,4 +1,3 @@
-
 const form = document.getElementById('formEntrega')
 const mensagem = document.getElementById('mensagem')
 
@@ -47,4 +46,3 @@ form.addEventListener('submit', async (e) => {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 })
-

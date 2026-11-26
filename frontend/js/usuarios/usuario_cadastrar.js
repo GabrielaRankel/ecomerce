@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const formulario = document.getElementById('formCadastro')
 const mensagem = document.getElementById('mensagem')
@@ -40,4 +39,3 @@ formulario.addEventListener('submit', async (event) => {
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
     }
 })
-

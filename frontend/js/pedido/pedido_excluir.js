@@ -1,4 +1,3 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
@@ -72,4 +71,3 @@ document.getElementById('form_excluir').addEventListener('submit', async (e) => 
 })
 
 carregarPedidos()
-

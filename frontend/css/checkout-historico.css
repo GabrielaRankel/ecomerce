@@ -3,104 +3,174 @@
    html/checkout.html e html/historico.html
    ====================================================== */
 
-main.pagina-pedido {
-    max-width: 800px;
-}
+main.pagina-pedido { max-width: 860px; }
 
-main.pagina-pedido > p {
-    color: var(--tinta-suave);
+main.pagina-pedido > h1 {
+    font-weight: 500;
+    font-style: italic;
 }
 
 /* ---------- CHECKOUT ---------- */
 
 #resumoCheckout {
-    background: var(--branco);
+    position: relative;
+    margin-top: 34px;
+    padding: 30px 34px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)), var(--superficie);
     border: 1px solid var(--borda);
-    border-left: 5px solid var(--ouro);
-    border-radius: var(--raio);
+    border-radius: 18px;
     box-shadow: var(--sombra);
-    padding: 18px 22px;
-    margin-top: 20px;
+}
+
+#resumoCheckout h2:first-child {
+    margin-bottom: 14px;
+    font-size: 1.9rem;
+    font-weight: 500;
 }
 
 #resumoCheckout p {
-    padding: 4px 0;
-    border-bottom: 1px dashed var(--borda);
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--borda-forte);
+    font-size: 0.95rem;
+    color: var(--texto-suave);
 }
 
-#resumoCheckout h2 {
-    color: var(--vinho);
-    margin: 0;
+#resumoCheckout br { display: none; }
+
+#resumoCheckout h2:last-of-type {
+    margin: 22px 0 0;
+    font-size: 2rem;
+    color: var(--ouro-claro);
 }
+
+#formCheckout { max-width: none; }
 
 .aviso-checkout {
-    background: #F7EBCB;
-    border: 1px solid var(--ouro);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin: 10px 0;
+    margin: 16px 0;
+    padding: 14px 18px;
+    background: rgba(200, 164, 92, 0.08);
+    border: 1px solid rgba(200, 164, 92, 0.35);
+    border-left: 3px solid var(--ouro);
+    border-radius: 10px;
     font-size: 0.9rem;
-    color: var(--tinta);
+    color: var(--texto);
 }
 
-.aviso-checkout:empty {
-    display: none;
-}
+.aviso-checkout:empty { display: none; }
 
 /* ---------- HISTÓRICO ---------- */
 
+#listaPedidos br { display: none; }
+
+#listaPedidos > p { color: var(--texto-suave); }
+
 .pedido {
-    background: var(--branco);
+    position: relative;
+    margin-top: 26px;
+    padding: 32px 34px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)), var(--superficie);
     border: 1px solid var(--borda);
-    border-top: 5px solid var(--verde);
-    border-radius: var(--raio);
+    border-radius: 20px;
     box-shadow: var(--sombra);
-    padding: 20px 24px;
-    margin-top: 20px;
+    animation: pedido-entra 0.6s var(--curva) both;
+}
+
+.pedido::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 34px;
+    right: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+
+@keyframes pedido-entra {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+}
+
+.pedido h2 {
+    margin-bottom: 14px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--ouro-claro);
+}
+
+.pedido > p {
+    padding: 4px 0;
+    font-size: 0.94rem;
+    color: var(--texto-suave);
+}
+
+.pedido p strong {
+    margin-right: 6px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texto-fraco);
 }
 
 .pedido h3 {
-    margin: 14px 0 8px;
-    font-size: 1.05rem;
+    margin: 26px 0 12px;
+    padding-top: 22px;
+    border-top: 1px solid var(--borda);
+    font-size: 1.35rem;
 }
 
 .item-pedido {
-    background: var(--papel);
+    margin-bottom: 10px;
+    padding: 14px 18px;
+    background: #0f0f13;
     border: 1px solid var(--borda);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 8px;
-    font-size: 0.92rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: border-color 0.25s;
 }
 
-.btn-ebooks {
-    margin-top: 12px;
-    background: var(--vinho);
+.item-pedido:hover { border-color: var(--borda-forte); }
+
+.item-pedido p {
+    padding: 2px 0;
+    color: var(--texto-suave);
 }
 
-.btn-ebooks:hover {
-    background: #6F2430;
+.btn-ebooks { margin-top: 16px; }
+
+.btn-ebooks::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203v12M7%2010l5%205%205-5M4%2020h16'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='black'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203v12M7%2010l5%205%205-5M4%2020h16'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-.area-ebooks {
-    margin-top: 10px;
-}
+.area-ebooks { margin-top: 14px; }
 
-.area-ebooks a {
-    font-weight: 600;
-}
+.area-ebooks a { font-weight: 500; }
 
 .area-ebooks p {
-    padding: 4px 0;
+    padding: 8px 0;
+    color: var(--texto-suave);
 }
 
 .aviso-ebook {
-    margin-top: 12px;
-    color: var(--tinta-suave);
-    font-size: 0.9rem;
-    font-style: italic;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--azul);
+    background: rgba(143, 166, 198, 0.07);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.88rem;
+    color: var(--azul);
 }
 
-#listaPedidos br {
-    display: none;
+@media (max-width: 600px) {
+
+    .pedido,
+    #resumoCheckout { padding: 24px 20px; }
+
+    .pedido::before { left: 20px; right: 20px; }
+
 }
